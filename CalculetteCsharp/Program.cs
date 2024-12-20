@@ -69,7 +69,7 @@ namespace MyApp
                 do
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (x)   (/) : \n");
+                    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (*)   (/) : \n");
                     operation = Console.ReadLine();
                     Console.ResetColor();
 
@@ -100,7 +100,7 @@ namespace MyApp
                         Console.WriteLine($"\n Résultat : {Soustraction(nombre_a, nombre_b)}");
                         break;
 
-                    case "x":
+                    case "*":
                         Console.WriteLine($"\n Résultat : {Multiplication(nombre_a, nombre_b)}");
                         break;
 
