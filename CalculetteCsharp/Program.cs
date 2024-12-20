@@ -16,23 +16,35 @@ namespace MyApp
 
             {
 
+
                 // Création des 4 fonction (méthodes) de calcul
-                static double Addition(double nombre_a, double nombre_b)
+
+                string OperteurKo(string operation)
+                {
+                    if (operation != "+" || operation != "-" || operation != "*" || operation != "/" || operation != "o")
+                    {
+                        Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (x)   (/) : \n");
+                    }
+                    return operation;
+
+                }
+
+                double Addition(double nombre_a, double nombre_b, string operation)
                 {
                     return nombre_a + nombre_b;
                 }
 
-                static double Soustraction(double nombre_a, double nombre_b)
+                double Soustraction(double nombre_a, double nombre_b)
                 {
                     return nombre_a - nombre_b;
                 }
 
-                static double Multiplication(double nombre_a, double nombre_b)
+                double Multiplication(double nombre_a, double nombre_b)
                 {
                     return nombre_a * nombre_b;
                 }
 
-                static double Division(double nombre_a, double nombre_b)
+                double Division(double nombre_a, double nombre_b)
                 {
                     if (nombre_b == 0)
                     {
@@ -48,12 +60,26 @@ namespace MyApp
                 Console.Write($"Entrez votre première valeur : ");
                 double nombre_a = double.Parse(Console.ReadLine());
 
-                // Choix l'opérateur (par le switch case)                
-                Console.WriteLine("\n (+)   (-)   (x)   (/) \n");
-                //Console.Write("Faites votre choix (+ , - , x , / , = ):   ");
+                // Choix l'opérateur (par le switch case)               
+                Console.WriteLine("\n \t (+)   (-)   (x)   (/) \n");
                 Console.ForegroundColor = ConsoleColor.Red;
                 string operation = Console.ReadLine();
-                Console.ResetColor();
+
+
+                do
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (x)   (/) : \n");
+                    operation = Console.ReadLine();
+                    Console.ResetColor();
+
+                   
+
+                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o");
+                
+
+                //Console.SetCursorPosition(1, Console.CursorTop);
+                
 
                 Console.Write($"\n Entrez votre deuxième valeur : ");
                 double nombre_b = double.Parse(Console.ReadLine());
@@ -66,7 +92,7 @@ namespace MyApp
 
                     case "+":
                         Console.Clear();
-                        Console.WriteLine($"\n Résultat : {Addition(nombre_a, nombre_b)}");
+                        Console.WriteLine($"\n Résultat : {Addition(nombre_a, nombre_b, operation)}");
                         break;
 
                     case "-":
@@ -93,7 +119,7 @@ namespace MyApp
             }
             //Je continu les calcules tant que la saisi est egale à "o"
             while (Console.ReadLine().Equals("o"));
-            Console.Clear();
+            //Console.Clear();
         }
 
         
