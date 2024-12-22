@@ -96,7 +96,8 @@ namespace MyApp
                     if (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o")
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\n \t Saisi un opérateur valide (+)   (-)   (x)   (/) : \n");
+                        Console.Write("\nSaisir un opérateur:\n");
+                        Console.Write(" [+] [-] [x] [/] ");
                         operation = Console.ReadLine();
                         Console.ResetColor();
                     }
