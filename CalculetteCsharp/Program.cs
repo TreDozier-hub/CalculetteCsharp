@@ -44,29 +44,36 @@ namespace MyApp
                 }
 
 
-                //Créatoin de la Fonction Cadrage pour entourer les opérateur:
+                //Création de la Fonction pour retirer l'opérateur saisi (recherche sur web et chat)
 
-                //void Cadrage(string titre)
-                //{
-                //    Console.Clear();
+                string LireEntreeInvisible()
+                {
+                    string input = "";
+                    ConsoleKeyInfo key;
 
-                //    titre = $"║ {titre} ║";
-                //    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                //    Console.Write("╔");
-                //    for (int i = 0; i < titre.Length - 2; i++)
-                //    {
-                //        Console.Write("═");
-                //    };
-                //    Console.WriteLine("╗");
-                //    Console.WriteLine(titre);
-                //    Console.Write("╚");
-                //    for (int i = 0; i < titre.Length - 2; i++)
-                //    {
-                //        Console.Write("═");
-                //    };
-                //    Console.WriteLine("╝");
-                //    Console.ResetColor();
-                //}
+                    do
+                    {
+                        key = Console.ReadKey(intercept: true); // Intercept empêche l'affichage du caractère
+                        if (key.Key != ConsoleKey.Enter)
+                        {
+                            input += key.KeyChar;
+                        }
+                    } while (key.Key != ConsoleKey.Enter);
+
+                    Console.WriteLine(); // Passer à la ligne après la saisie
+                    return input;
+                }
+            
+
+                // Création de la fonction pour afficher un cadre bleu autour des opérations
+                void AfficherCadre(string texte)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("╔" + new string('═', texte.Length + 2) + "╗");
+                    Console.WriteLine("║ " + texte + " ║");
+                    Console.WriteLine("╚" + new string('═', texte.Length + 2) + "╝");
+                    Console.ResetColor();
+                }
 
                 //Effacé la console après Equals("o") pour sortir
                 Console.Clear();
@@ -81,11 +88,15 @@ namespace MyApp
                 // Je crée une boucle imbriquée pour calculer plusieurs valeurs a la suite et finir par "="
                 while (true)
                 {
-
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("\n [+] \t\t[-]\t\t" + "\n [/] \t\t[*] \t\t" + "\n [=](pour terminer) \n");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    operation = Console.ReadLine();
                     Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Yellow;                    
+                    //operation = Console.ReadLine();
+                    operation = LireEntreeInvisible();
+                    Console.ResetColor();
+
+                    AfficherCadre(operation);
 
                     if (operation == "=")
                     {
