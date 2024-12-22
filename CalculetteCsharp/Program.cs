@@ -56,7 +56,7 @@ namespace MyApp
 
                 Console.WriteLine("--- Effectuez une opération sur la cool calculatrice en C# ---\n");
 
-                // Ajout des valeurs nombre_a et nombre_b
+                // Ajout des valeurs nombre_a et nombre_Sup
                 Console.Write($"Entrez votre première valeur : ");
                 double nombre_a = double.Parse(Console.ReadLine());
 
@@ -66,23 +66,20 @@ namespace MyApp
                 string operation = Console.ReadLine();
 
 
-                do
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (*)   (/) : \n");
-                    operation = Console.ReadLine();
-                    Console.ResetColor();
+                //do
+                //{
+                //    Console.ForegroundColor = ConsoleColor.Red;
+                //    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (*)   (/) : \n");
+                //    operation = Console.ReadLine();
+                //    Console.ResetColor();
 
                    
 
-                } while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o");
+                //} while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o");
                 
 
-                //Console.SetCursorPosition(1, Console.CursorTop);
-                
 
-                Console.Write($"\n Entrez votre deuxième valeur : ");
-                double nombre_b = double.Parse(Console.ReadLine());
+                
 
 
                 
@@ -92,20 +89,20 @@ namespace MyApp
 
                     case "+":
                         Console.Clear();
-                        Console.WriteLine($"\n Résultat : {Addition(nombre_a, nombre_b, operation)}");
+                        Console.WriteLine($"\n Résultat : {Addition(nombre_a, nombre_Sup, operation)}");
                         break;
 
                     case "-":
                         //Console.WriteLine(Soustraction(5, 3));
-                        Console.WriteLine($"\n Résultat : {Soustraction(nombre_a, nombre_b)}");
+                        Console.WriteLine($"\n Résultat : {Soustraction(nombre_a, nombre_Sup)}");
                         break;
 
                     case "*":
-                        Console.WriteLine($"\n Résultat : {Multiplication(nombre_a, nombre_b)}");
+                        Console.WriteLine($"\n Résultat : {Multiplication(nombre_a, nombre_Sup)}");
                         break;
 
                     case "/":
-                        Console.WriteLine($"\n Résultat : {Division(nombre_a, nombre_b)}");
+                        Console.WriteLine($"\n Résultat : {Division(nombre_a, nombre_Sup)}");
                              break;
 
                     default:
