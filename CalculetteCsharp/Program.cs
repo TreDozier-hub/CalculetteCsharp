@@ -29,96 +29,92 @@ namespace MyApp
 
                 }
 
-                double Addition(double nombre_a, double nombre_b, string operation)
+                double Addition(double nombre_a, double nombre_Sup)
                 {
-                    return nombre_a + nombre_b;
+                    return nombre_a + nombre_Sup;
                 }
 
-                double Soustraction(double nombre_a, double nombre_b)
+                double Soustraction(double nombre_a, double nombre_Sup)
                 {
-                    return nombre_a - nombre_b;
+                    return nombre_a - nombre_Sup;
                 }
 
-                double Multiplication(double nombre_a, double nombre_b)
+                double Multiplication(double nombre_a, double nombre_Sup)
                 {
-                    return nombre_a * nombre_b;
+                    return nombre_a * nombre_Sup;
                 }
 
-                double Division(double nombre_a, double nombre_b)
+                double Division(double nombre_a, double nombre_Sup)
                 {
-                    if (nombre_b == 0)
+                    if (nombre_Sup == 0)
                     {
                         Console.WriteLine("Erreur : Division par zéro !");
                         return 0;
                     }
-                    return nombre_a / nombre_b;
+                    return nombre_a / nombre_Sup;
                 }
 
                 Console.WriteLine("--- Effectuez une opération sur la cool calculatrice en C# ---\n");
 
-                // Ajout des valeurs nombre_a et nombre_Sup
+                // Récupérer la première valeur
                 Console.Write($"Entrez votre première valeur : ");
-                double nombre_a = double.Parse(Console.ReadLine());
+                double resultat = double.Parse(Console.ReadLine());
+                string operation;
 
-                // Choix l'opérateur (par le switch case)               
-                Console.WriteLine("\n \t (+)   (-)   (x)   (/) \n");
-                Console.ForegroundColor = ConsoleColor.Red;
-                string operation = Console.ReadLine();
-
-
-                //do
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Red;
-                //    Console.WriteLine("\n \t Saisi un opérateur valide ducon (+)   (-)   (*)   (/) : \n");
-                //    operation = Console.ReadLine();
-                //    Console.ResetColor();
-
-                   
-
-                //} while (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o");
-                
-
-
-                
-
-
-                
-                // Effectuer l'opération en fonction du choix case (+,-,*,/)
-                switch (operation)
+                // Je crée une boucle imbriquée pour calculer plusieurs valeurs
+                while (true)
                 {
+                    Console.WriteLine("\n (+)   (-)   (x)   (/)   (= pour terminer) \n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    operation = Console.ReadLine();
+                    Console.ResetColor();
 
-                    case "+":
-                        Console.Clear();
-                        Console.WriteLine($"\n Résultat : {Addition(nombre_a, nombre_Sup, operation)}");
-                        break;
 
-                    case "-":
-                        //Console.WriteLine(Soustraction(5, 3));
-                        Console.WriteLine($"\n Résultat : {Soustraction(nombre_a, nombre_Sup)}");
-                        break;
 
-                    case "*":
-                        Console.WriteLine($"\n Résultat : {Multiplication(nombre_a, nombre_Sup)}");
-                        break;
 
-                    case "/":
-                        Console.WriteLine($"\n Résultat : {Division(nombre_a, nombre_Sup)}");
-                             break;
+                    if (operation == "=")
+                    {
+                        Console.WriteLine($"\n Résultat final : {resultat}");
+                        break; // Sortir de la boucle imbriquée
+                    }
+                    else if (operation != "+" && operation != "-" && operation != "*" && operation != "/" && operation != "o") ;
+                    
+                    else;
+                    Console.WriteLine("\n \t Saisi un opérateur valide (+)   (-)   (x)   (/) : \n");
+                    operation = Console.ReadLine();
 
-                    default:
-                         Console.WriteLine("\n Opérateur non valide !");
-                        break;
+
+
+                    Console.Write($"\n Entrez une autre valeur : ");
+                    double nombre_b = double.Parse(Console.ReadLine());
+
+                    // Un switch case pour les Fonctions de calculs en fonction de l'opération choisie
+                    switch (operation)
+                    {
+                        case "+":
+                            resultat = Addition(resultat, nombre_b);
+                            break;
+                        case "-":
+                            resultat = Soustraction(resultat, nombre_b);
+                            break;
+                        case "x":
+                            resultat = Multiplication(resultat, nombre_b);
+                            break;
+                        case "/":
+                            resultat = Division(resultat, nombre_b);
+                            break;
+                        default:
+                            Console.WriteLine("\n Opérateur non valide !");
+                            break;
+                    }
+
+                    Console.WriteLine($"\n Résultat en cours : {resultat}");
                 }
 
-                Console.WriteLine("\n On continu ? (o/n)");
-
-              
-            }
-            //Je continu les calcules tant que la saisi est egale à "o"
-            while (Console.ReadLine().Equals("o"));
-            //Console.Clear();
+                Console.WriteLine("\n On continue ? (o/n)");
+            } while (Console.ReadLine().Equals("o"));
         }
-
-        
     }
 }
+
+
